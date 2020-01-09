@@ -6,17 +6,23 @@ class PersonCard extends Component {
   constructor(props){
     super(props);
     this.state = {
-
+      age: parseInt(this.props.age)
     };
   }
+
+  birthday = e =>{
+    this.setState({age: this.state.age + 1});
+  }
+
   render(){
     return(
       <div className = "cards">
         <div className = "cardtext">
-          <h3>{this.props.name}</h3>
-          <p>{this.props.age}</p>
-          <p>{this.props.hairColor}</p>        
-        </div>
+          <h3>{this.props.lastName}, {this.props.firstName}</h3>
+          <p>Age: {this.state.age}</p>
+          <p>Hair Color: {this.props.hairColor}</p>        
+          </div>
+        <button onClick={this.birthday}>Birthday Button for {this.props.firstName} {this.props.lastName}</button>
       </div>
     )
   }
@@ -27,22 +33,26 @@ function App() {
   return (
     <div>
       <PersonCard 
-        name = "Doe, Jane"
+        firstName = "Jane"
+        lastName = "Doe"
         age = "45"
         hairColor="Black"
       />
       <PersonCard 
-        name = "Smith, John"
+        firstName = "John"
+        lastName = "Smith"
         age = "88"
         hairColor="Brown"
       />
       <PersonCard 
-        name = "Fillmore, Millard"
+        firstName = "Millard"
+        lastName = "Fillmore"
         age = "50"
         hairColor="Brown"
       />
       <PersonCard 
-        name = "Smith, Maria"
+        firstName = "Maria"
+        lastName = "Smith"      
         age = "62"
         hairColor="Brown"
       />      
